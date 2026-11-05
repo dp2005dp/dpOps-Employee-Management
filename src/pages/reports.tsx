@@ -69,11 +69,11 @@ const ReportForm = ({projects , reports} : ReportFormProps) => {
   const [prevfile , setPrevFile] = useState('')
   const [file , setFile] = useState<File | null>(null)
   const empId = localStorage.getItem('EMPID')
-  const ReportTitle= (value:string) => {
+  const ReportTitle= (_name : string , value:string) => {
         setTitle(value)
     }
 
-  const OnProjectName= (value : string) => {
+  const OnProjectName= (_name : string ,value : string) => {
         setProjectName(value)
     }
 
@@ -150,11 +150,8 @@ const ReportForm = ({projects , reports} : ReportFormProps) => {
       formData.append('image', file as string |  Blob)
       formData.append('projectId' , getData?.projectId as string)
       formData.append('employeeId' , String(empId))
-     console.log(projectName , file , reportNote , reportTitle)
       
       const response = await employeesServices.reports(formData)
-
-      console.log(response)
 
       if (response.status === 200) {
           toast.success(response.data.message)
@@ -262,8 +259,8 @@ const ReportForm = ({projects , reports} : ReportFormProps) => {
                       /> : 
                       <>
                        {
-                        reports.map(eachdata => (
-                           <div className="md:flex shadow-md rounded-[5px] p-3 bg-[#ffffff] justify-between items-start mt-5 mb-5  gap-5">
+                        reports.map((eachdata , index) => (
+                           <div key={index} className="md:flex shadow-md rounded-[5px] p-3 bg-[#ffffff] justify-between items-start mt-5 mb-5  gap-5">
                                 <div>
                                    <h1 className="text-[15px] text-[#000000] mb-3 font-dm-medium">
                                         {eachdata.projectName}</h1>

@@ -98,7 +98,7 @@ const Navbar = () => {
             <p className="text-[18px] text-[clamp(16px,3.5vw,18px)] text-[#ffffff] font-dm-regular">
                 {eachItem.name}
             </p>
-    </NavLink>
+        </NavLink>
         )})
        }
 

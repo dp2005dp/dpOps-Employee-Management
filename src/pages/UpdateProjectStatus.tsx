@@ -49,11 +49,7 @@ const renderState = {
 }
 
 const UpdateProjectStatus = () => {
-    
-    const {projects , status} = useEmployeeData()
-   
-
-
+  const {projects , status} = useEmployeeData()
 
 const pageRender = () => {
     switch(status) {
@@ -89,8 +85,8 @@ const pageRender = () => {
                      <h1 className="md:text-[22px] text-[clamp(18px,4vw,20px)] font-dm-bold text-[#112F62]">Status Guide</h1>
                      
                        {
-                        statusGuide.map(eachdata => (
-                           <div className="flex items-center mt-5 mb-5  gap-2">
+                        statusGuide.map((eachdata  , index)=> (
+                           <div key={index} className="flex items-center mt-5 mb-5  gap-2">
                                  <div 
                                      className="rounded-full  h-[30px] flex flex-col items-center justify-center w-[30px]"
                                      style={{
@@ -137,11 +133,11 @@ const UpdateProjectForm = ({project} : FormProps) => {
     const [progress , setProgress] = useState<number>(0)
     
     const [status , setStatus] = useState(StatusObaject[0])
-    const getStatus= (value : string) => {
+    const getStatus= (_name : string , value : string) => {
         setStatus(value)
     }
 
-     const ProjectName= (value : string) => {
+     const ProjectName= (_name : string , value : string) => {
         setProjectName(value)
     }
 

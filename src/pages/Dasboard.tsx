@@ -38,13 +38,9 @@ const Dasboard =() => {
     
   return (     
     <div className="p-5 overflow-y-auto scroll-smooth hide-scrollbar  h-[calc(100dvh-80px)]">
-     {/* Welcom */}
-     <h1 className="md:text-[26px] text-[clamp(20px,5vw,26px)] text-[#000000]  font-bold">Hi, {data?.fullName} 👋</h1>
-     <p className="md:text-[18px] text-[clamp(15px,4vw,18px)] text-gray-500">Here's your project overview.</p>
-    
-      {pageRender()}
-   
-  
+      <h1 className="md:text-[26px] text-[clamp(20px,5vw,26px)] text-[#000000]  font-bold">Hi, {data?.fullName} 👋</h1>
+      <p className="md:text-[18px] text-[clamp(15px,4vw,18px)] text-gray-500">Here's your project overview.</p>  
+        {pageRender()}
 </div>
 )
 }

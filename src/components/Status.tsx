@@ -4,7 +4,6 @@ interface StatusProps {
 
 const Status = ({status} : StatusProps) =>  {
      
-     console.log('Project status :' ,status)
 
     return (
     <div 

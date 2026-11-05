@@ -45,8 +45,6 @@ const Login =() => {
 
             navigation('/')
         }
-
-        else {}
         }
         
         catch(e){

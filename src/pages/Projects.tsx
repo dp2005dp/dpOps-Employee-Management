@@ -43,7 +43,7 @@ export const ProjectsStatus = ({projectData}: ProjectsProps) => {
   const [userInput ,setInput] = useState<string>('')
   const [filterStatus , setStatus] = useState<string>('All')
   
-  const FilterStatus = ( value :string) => {
+  const FilterStatus = (_name : string , value :string) => {
        setStatus(value)
   }
 
@@ -130,7 +130,7 @@ export const ProjectsStatus = ({projectData}: ProjectsProps) => {
                     <>
                     {
                       filterData().map((eachdata , index )=> (
-                        <>
+                        <div key={index}>
                           <div className={` ${index === 0 ? 'border-1 border-gray-200' : ' '} 
                              `}/>
                           <div  className="grid grid-cols-6  gap-10 mt-3 mb-3">
@@ -167,7 +167,7 @@ export const ProjectsStatus = ({projectData}: ProjectsProps) => {
                           </div>
                              <div className={` ${index === projectData.length - 1 ? '' : ' border-b-1 border-gray-200'} 
                              `}/>
-                            </>
+                            </div>
                       ))
                     }
                     </>

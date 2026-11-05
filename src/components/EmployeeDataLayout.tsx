@@ -17,10 +17,9 @@ const EmployeeDataLayout = ({children}: { children: ReactNode }) => {
 
   const [projects , setProjects] = useState<EmployeeProjectsInterface[]>([])
   const [status , setStatus] = useState(renderState.loading)
-  const empId =  String(localStorage.getItem('EMPID'))
   const [data, setEmployeedetails] = useState<EmployeeInterface>()
   const [reports , setReorts] = useState<ReportsFormInterface[]>([])   
-
+  const [empId , setId] = useState('')
   const EmployeeProjectsAndDetails = async () => {
      
      try {
@@ -32,8 +31,6 @@ const EmployeeDataLayout = ({children}: { children: ReactNode }) => {
             setEmployeedetails(employeedetails.data.data[0])
             setReorts(employeeReports.data.data)
             setStatus(renderState.success)
-
-            console.log(employeeReports.data)
           }
        
      }
@@ -42,9 +39,17 @@ const EmployeeDataLayout = ({children}: { children: ReactNode }) => {
      }
     
    }
- 
+  
+    
+   
+    useEffect(() => {
+        const empId = String(localStorage.getItem('EMPID'))
+        setId(empId)
+    } , [empId])
 
    useEffect(() => {
+
+    if(!empId) return
     EmployeeProjectsAndDetails()
 
     socket.on('get assignEmployess' , () => {
@@ -77,10 +82,6 @@ const EmployeeDataLayout = ({children}: { children: ReactNode }) => {
 
    },[empId])
    
-
-
-
-
     return (
          <EmployeeDataContext.Provider
          value={{

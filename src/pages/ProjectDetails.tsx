@@ -1,6 +1,6 @@
 import { useState  , useEffect} from "react";
 import { LuMoveLeft } from "react-icons/lu";
-import { useNavigate , useParams , useLocation } from "react-router-dom";
+import { useNavigate , useParams} from "react-router-dom";
 import type { ProjectInterface , assignProjectmembers } from "../mockdata/mockdata";
 import type { IconType} from 'react-icons'
 import { MdOutlineCalendarMonth } from "react-icons/md";
@@ -11,47 +11,63 @@ import { FaRegFileCode } from "react-icons/fa6";
 import { MdOutlinePeopleAlt } from "react-icons/md";
 import { employeesServices } from "../../services/employeeSerives";
 import ProjectTypeIcons from "../components/ProjectTypeIcons";
-
+import PageLoader from "../components/PageLoader";
+import PageNotFound from "../components/PageNotFound";
+const renderState = {
+  loading : 'Loading',
+  success : 'Success',
+  failure : 'Failure'
+}
 
 const ProjectDetails = () => {
     const navigate = useNavigate()
-    const location = useLocation()
     const {id} = useParams()
-
     const [data , setProjectData] = useState<ProjectInterface>()
-
     const [assignMembers , setMembers] = useState<assignProjectmembers[]>([])
-
+    const [status , setStateStaus] = useState(renderState.loading)
+    
+    
     const fetchData = async () => {
-      const response = await employeesServices.ProjectDetails(Number(id))
-    console.log("get by id" ,response.data.data)
-      setProjectData(response.data.data)
+         
+        try {
+            setStateStaus(renderState.loading)
+            const [resProject , resMembers] = await Promise.all([employeesServices.ProjectDetails(Number(id)) , employeesServices.getEmployess(Number(id))]) 
+            
+            if (resProject.status === 200 && resMembers.status === 200) {
+              setProjectData(resProject.data.data)
+              setMembers(resMembers.data.data)
+              setStateStaus(renderState.success)
+            }
+            
+            
+        }
+        catch(e){
+            setStateStaus(renderState.failure)
+        }
+     
     }
    
-    const teachAssgnProjectMembers = async() => {
-        const response = await employeesServices.getEmployess(Number(id))
-
-        setMembers(response.data.data)
-        console.log('assign members' ,response.data.data)
-    }
 
     useEffect(() => {
         fetchData()
-        teachAssgnProjectMembers()
-    } , [])
+    } , [id])
     
-    console.log('data' ,data)
+ const pageRender = () => {
+    switch(status) {
+       case renderState.loading : 
+       return <div className="flex flex-col justify-center h-[50vh] items-center"><PageLoader /></div> 
+      
+       case renderState.success : 
+       return <ProjectDetailsJsx data={data} assignMembers={assignMembers}/>
+ 
+      case renderState.failure :
+     return  <PageNotFound />
+      
+      default :
+      return null
+    }
+}
 
-const formatDate = (date?: string) => {
-if (!date) return "";
-  return new Date(date).toLocaleDateString("en-GB", {
-    day: "2-digit",
-    month: "short",
-    year: "numeric", 
-  });
-}; 
-
- console.log('location.pathname' ,  console.log(location.pathname))
 
     return (
          <div className="h-[calc(100dvh-80px)]  md:p-5 shadow-md overflow-y-auto scrollbar-smooth hide-scrollbar p-3">
@@ -61,8 +77,35 @@ if (!date) return "";
                 >
                 <LuMoveLeft className="h-[20px] w-[20px]"/>   <p> Back</p>
             </button>
+             
+              {pageRender()}
             
-              <div className="mb-5">
+            </div> 
+           </div>
+
+       
+           
+
+    )
+}
+
+interface ProjectProps {
+  data : ProjectInterface | undefined
+  assignMembers  : assignProjectmembers[]
+}
+
+const ProjectDetailsJsx = ({data , assignMembers} : ProjectProps) => {
+  const formatDate = (date?: string) => {
+    if (!date) return "";
+      return new Date(date).toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric", 
+      });
+    }; 
+   return (
+      <div>
+            <div className="mb-5">
                   <div className="flex items-start gap-3">
                             <ProjectTypeIcons value={String(data?.projectType)}/>
                             <div>
@@ -135,18 +178,9 @@ if (!date) return "";
             
 
             </div>
-            </div> 
-           </div>
-
-       
-           
-
-    )
+      </div>
+   )
 }
-
-
-
-
 
 
 
