@@ -137,11 +137,11 @@ const UpdateProjectForm = ({project} : FormProps) => {
     const [progress , setProgress] = useState<number>(0)
     
     const [status , setStatus] = useState(StatusObaject[0])
-    const getStatus= (name : string , value : string) => {
+    const getStatus= (value : string) => {
         setStatus(value)
     }
 
-     const ProjectName= (name : string , value : string) => {
+     const ProjectName= (value : string) => {
         setProjectName(value)
     }
 

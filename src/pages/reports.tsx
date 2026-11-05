@@ -69,11 +69,11 @@ const ReportForm = ({projects , reports} : ReportFormProps) => {
   const [prevfile , setPrevFile] = useState('')
   const [file , setFile] = useState<File | null>(null)
   const empId = localStorage.getItem('EMPID')
-  const ReportTitle= (name:string , value:string) => {
+  const ReportTitle= (value:string) => {
         setTitle(value)
     }
 
-  const OnProjectName= (name : string , value : string) => {
+  const OnProjectName= (value : string) => {
         setProjectName(value)
     }
 

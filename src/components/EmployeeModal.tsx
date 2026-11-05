@@ -139,7 +139,7 @@ const EmployeeDeatils = ({data , onClose }: EmployeeProps) => {
               
              
                  {
-                    data.projects.map((eachdata , index) => (
+                    data.projects.map((eachdata) => (
                         <>
                       
                     <div className="grid grid-cols-4 gap-5 p-2 border-b-1 border-l-1 border-r-1 border-gray-200">

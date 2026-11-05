@@ -43,7 +43,7 @@ export const ProjectsStatus = ({projectData}: ProjectsProps) => {
   const [userInput ,setInput] = useState<string>('')
   const [filterStatus , setStatus] = useState<string>('All')
   
-  const FilterStatus = (name:string , value :string) => {
+  const FilterStatus = ( value :string) => {
        setStatus(value)
   }
 

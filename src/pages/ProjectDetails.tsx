@@ -1,4 +1,3 @@
-import { GiCheckMark } from "react-icons/gi";
 import { useState  , useEffect} from "react";
 import { LuMoveLeft } from "react-icons/lu";
 import { useNavigate , useParams , useLocation } from "react-router-dom";
@@ -145,35 +144,12 @@ if (!date) return "";
     )
 }
 
-interface Props {
-   title : string,
-   value : string | number | undefined
-}
 
-const ProjectProps = (
-    {title , value} : Props
-) => {
-    return <div className="col-span-1 mt-3 md:mb-3">
-        <h1 className="text-gray-400 font-dm-regular text-[15px]">{title}</h1>
-        <p  className="text-[#000000] font-dm-medium text-[20px]">{`$${value?.toString().split(".")[0]}/-`}</p>
-    </div>
-}
 
-interface TimelineProps {
-    status : string | undefined,
-    value : string,
-}
 
-const Timeline = ({value , status} : TimelineProps) => (
-     <div className="flex flex-col items-center">
-        {
-          status === value ? <div className="md:h-[30px] bg-[#16a05a] flex flex-col justify-center items-center  md:w-[30px] h-5 w-5  rounded-full">    
-              <GiCheckMark className="text-[#ffffff]  md:h-[15px] h-[10px] w-[10px] md:w-[15px]"/>    
-          </div> : <div className={`md:h-[30px] md:w-[30px] h-4 w-4  border-5 md:border-8 border-gray-300 rounded-full`}/>
-        }
-        
-     </div>
-)
+
+
+
 
 
 

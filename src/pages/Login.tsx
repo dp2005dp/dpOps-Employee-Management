@@ -6,7 +6,7 @@ import LoginImage from "../assets/LoginImage.png"
 import toast from "react-hot-toast";
 import { employeesServices } from "../../services/employeeSerives";
 import { useNavigate } from "react-router-dom";
-import axios, { isAxiosError } from "axios";
+import { isAxiosError } from "axios";
 
 const Login =() => {
     const navigation = useNavigate()
