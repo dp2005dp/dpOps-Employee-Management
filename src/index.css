@@ -1,0 +1,185 @@
+@import 'tailwindcss';
+
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+
+
+
+
+@font-face {
+  font-family: 'CalSansRegular';
+  src: url('./assets/fonts/CalSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DMSansThin100';
+  src: url('./assets/fonts/DMSans_36pt-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DMSansRegular400';
+  src: url('./assets/fonts/DMSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DMSansMedium500';
+  src: url('./assets/fonts/DMSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DMSansSemiBoldItalic600';
+  src: url('./assets/fonts/DMSans-SemiBoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DMSansBold700';
+  src: url('./assets/fonts/DMSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'DMSansBlack900';
+  src: url('./assets/fonts/DMSans_18pt-Black.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "BebasNeueRegular";
+  src: url("./assets/fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}                            
+
+@import "tailwindcss";
+
+@theme {
+  --font-heading: "CalSansRegular", sans-serif;
+
+  --font-dm-thin: "DMSansThin100", sans-serif;
+  --font-dm-regular: "DMSansRegular400", sans-serif;
+  --font-dm-medium: "DMSansMedium500", sans-serif;
+  --font-dm-semibold: "DMSansSemiBoldItalic600", sans-serif;
+  --font-dm-bold: "DMSansBold700", sans-serif;
+  --font-dm-black: "DMSansBlack900", sans-serif;
+  --BebasNeueRegular: "BebasNeueRegular", sans-serif;
+}
+
+
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+ 
+
+
+  /* Responsive Text */
+
+
+  .text-r-16 {
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+
+  .text-r-18 {
+    font-size: clamp(15px, 4vw, 18px);
+  }
+
+  .text-r-20 {
+    font-size: clamp(16px, 4.5vw, 20px);
+  }
+
+  .text-r-22 {
+    font-size: clamp(18px, 5vw, 22px);
+  }
+
+  .text-r-24 {
+    font-size: clamp(19px, 5vw, 24px);
+  }
+
+  .text-r-28 {
+    font-size: clamp(22px, 6vw, 28px);
+  }
+
+  .text-r-32 {
+    font-size: clamp(26px, 7vw, 32px);
+  }
+
+  .text-r-40 {
+    font-size: clamp(32px, 8vw, 40px);
+  }
+
+  .text-r-48 {
+    font-size: clamp(38px, 9vw, 48px);
+  }
+
+  .text-r-60 {
+    font-size: clamp(48px, 10vw, 60px);
+  }
+  
+
+   .h-r-20 { height: clamp(16px, 4vw, 20px); }
+
+  .h-r-21 { height: clamp(17px, 4vw, 21px); }
+
+  .h-r-22 { height: clamp(18px, 4vw, 22px); }
+
+  .h-r-48 {
+    height: clamp(40px, 10vw, 48px);
+  }
+
+  .h-r-57 {
+    height: clamp(50px, 11vw, 57px);
+  }
+
+  .h-r-64 {
+    height: clamp(56px, 12vw, 64px);
+  }
+
+  .h-r-80 {
+    height: clamp(64px, 14vw, 80px);
+  }
+  
+  .h-r-270 {
+  height: clamp(216px, 34vw, 270px);
+}
+
+   .h-r-480 {
+    height: clamp(384px, 60vw, 480px);
+  }
+
+   .w-r-50 {
+    width: clamp(40px, 13vw, 50px);
+  }
+
+  .w-r-51 {
+    width: clamp(41px, 13vw, 51px);
+  }
+
+  .w-r-52 {
+    width: clamp(42px, 13vw, 52px);
+  }
+  .w-r-280 {
+    width: clamp(240px, 80vw, 280px);
+  }
+
+  .w-r-350 {
+    width: clamp(280px, 85vw, 350px);
+  }
+
+  .w-r-400 {
+    width: clamp(320px, 90vw, 400px);
+  }
+
+
+  
+}
+
