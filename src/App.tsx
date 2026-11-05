@@ -43,7 +43,7 @@ const App = () => {
             onClick={() => navigation('/profile')}
            className="flex items-center cursor-pointer">
            
-                <img src={`http://localhost:5000/uploads/employeeProfiles/${data?.profilePhoto}`} className="h-[50px] w-[50px] rounded-full object-cover object-top"  alt="profile"/>
+                <img src={`${import.meta.env.VITE_IMAGE_URL}${data?.profilePhoto}`} className="h-[50px] w-[50px] rounded-full object-cover object-top"  alt="profile"/>
                 <RiArrowDropDownLine  className="h-[30px] w-[30px] text-[#112F62]"/>             
             </button>
       </div>
