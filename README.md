@@ -1,75 +1,41 @@
-# React + TypeScript + Vite
+1. Login
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Provides a secure login interface for employees to access their personalized dashboard using their credentials.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+<img width="1896" height="878" alt="image" src="https://github.com/user-attachments/assets/efcbf769-a4eb-4a9a-9229-e57167996502" />
 
-## React Compiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+<img width="1905" height="893" alt="image" src="https://github.com/user-attachments/assets/cbcc6c90-e687-4d98-ba38-6cbb62ce8650" />
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+My Projects
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Displays all projects assigned to the logged-in employee, including project details, deadlines, responsibilities, and current progress.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 
-```
+<img width="1902" height="900" alt="image" src="https://github.com/user-attachments/assets/d4d18c00-20d2-4075-a0bb-e974ecdfc65b" />
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Update Project Status
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Allows employees to update their assigned project progress by changing task statuses and providing the latest updates.
 
-```
+<img width="1907" height="902" alt="image" src="https://github.com/user-attachments/assets/21c53472-03e4-4eea-8a82-882d30881a76" />
+
+Submit Reports
+
+Enables employees to submit project progress reports, share work updates, and communicate completed tasks with administrators.
+
+<img width="1908" height="891" alt="image" src="https://github.com/user-attachments/assets/54e059b7-bc08-4b04-b0dd-6fb99076bbc0" />
+
+
+My Profile
+
+Displays employee profile information, including personal details, contact information, department, role, and employment details.
+
+<img width="1903" height="898" alt="image" src="https://github.com/user-attachments/assets/85749c8b-d6f9-4ce9-9473-f97ad817cf6b" />
+
+
+HappyCoding...DpOps...
