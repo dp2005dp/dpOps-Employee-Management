@@ -9,18 +9,45 @@ import Profile from "./pages/Profile"
 import { RiMenuFold2Fill } from "react-icons/ri";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import {Routes ,Route} from "react-router-dom"
-import { useState} from "react"
+import { useState , useEffect} from "react"
 import {motion} from "motion/react"
 import { useLocation , useNavigate } from "react-router-dom"
 import ProductRoutes from "./components/ProductRoutes"
 import PublicRoutes from "./components/PublicRoutes"
-import { useEmployeeData } from "./components/EmployeeDataLayout";
-
+import EmployeeDataLayout from './components/EmployeeDataLayout.tsx'
+import { Outlet } from "react-router-dom"
+import { employeesServices } from "../services/employeeSerives.ts"
+import type { EmployeeInterface } from "./mockdata/mockdata.ts"
 const App = () => {
-    const {data} = useEmployeeData()
     const location = useLocation()
     const [isShowNavBar , setShow] = useState(false)
     const navigation = useNavigate()
+    const [empId , setId] = useState('')
+    const [data , setData] = useState<EmployeeInterface>()
+    
+    const fetchEm = async () => {
+          const response = await employeesServices.getEmployeeDetails(empId)
+
+          if (response.status === 200) {
+              setData(response.data.data[0])
+          }
+    }
+    
+
+    useEffect(() => {
+        const empId = String(localStorage.getItem('EMPID'))
+        setId(empId)
+    } , [empId])
+    
+    
+    useEffect(() => {
+
+      if (!empId) return 
+       fetchEm()
+    },[empId])
+
+  
+
     return (
 
    <div className="flex items-start bg-[#F6F8FD]  w-full">
@@ -54,14 +81,16 @@ const App = () => {
             
 
             <Route element={<ProductRoutes />}>
-           
+                <Route element={<EmployeeDataLayout>
+                        <Outlet />
+                </EmployeeDataLayout>}>
                 <Route path="/" element={<Dasboard />}/>
                 <Route path="/UpdateStatus" element={<UpdateProjectStatus />}/>
                 <Route path="/projects" element={<Projects />}/>
                 <Route path="/projectDetails/:id" element={<ProjectDetails />}/>
                 <Route path="/reports" element={<Reports />}/>
                 <Route path="/profile" element={<Profile />}/>
-              
+              </Route>
             </Route>
        </Routes>
 

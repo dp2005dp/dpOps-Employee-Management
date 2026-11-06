@@ -4,13 +4,10 @@ import {BrowserRouter} from "react-router-dom"
 import './index.css'
 import App from './App.tsx'
 import { Toaster } from 'react-hot-toast'
-import EmployeeDataLayout from './components/EmployeeDataLayout.tsx'
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
-    <EmployeeDataLayout>
        <App />
-    </EmployeeDataLayout>
        <Toaster
       position='top-center'
       toastOptions={{
